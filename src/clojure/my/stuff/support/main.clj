@@ -5,7 +5,12 @@
               [neko.resource :as res]
               [neko.find-view :refer [find-view]]
               [neko.threading :refer [on-ui]])
-    (:import android.widget.EditText))
+    (:import (android.widget.EditText)
+             ;; This line causes the error. It happens with any class from them
+             ;; v4.view package. If I misspell the class, the error is caught
+             ;; correctly at compile time. Note that the class is not used in
+             ;; the code.
+             (android.support.v4.view ViewPager)))
 
 ;; We execute this function to import all subclasses of R class. This gives us
 ;; access to all application resources.
